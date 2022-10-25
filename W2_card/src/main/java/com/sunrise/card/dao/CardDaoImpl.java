@@ -19,9 +19,10 @@ public class CardDaoImpl implements CardDao {
 	@Override
 	public List<CardVO> cardList() {
 		return sqlSession.selectList("Card.cardList");
-		
-	
-		
+	}
+	@Override
+	public List<RcvapplVo> test(RcvapplVo rcvapplVo) {
+		return sqlSession.selectList("Card.rcvapplList", rcvapplVo);
 	}
 	@Override
 	public int deal(RcvapplVo rcvapplVo) {

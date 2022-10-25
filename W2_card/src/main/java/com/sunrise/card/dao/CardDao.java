@@ -9,6 +9,7 @@ import com.sunrise.card.vo.RcvapplVo;
 
 public interface CardDao {
 	List<CardVO> cardList();
+	public List<RcvapplVo> test(RcvapplVo rcvapplVo);
 	public int deal(RcvapplVo rcvapplVo);
 	public int card(CardVO cardvo);
 	public int cust(CustVo custVo);

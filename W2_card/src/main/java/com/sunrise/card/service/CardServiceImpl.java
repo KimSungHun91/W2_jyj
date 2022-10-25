@@ -21,6 +21,12 @@ public class CardServiceImpl implements CardService {
 		return null;
 	}
 
+	@Override
+	public List<RcvapplVo> test(RcvapplVo rcvapplVo){
+		List<RcvapplVo> rcvapplList = cDao.test(rcvapplVo);
+		return rcvapplList;
+	}
+	
 	public int deal(RcvapplVo rcvapplVo) {
 		
 		return cDao.deal(rcvapplVo);
