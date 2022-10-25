@@ -14,7 +14,7 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	// test
+	// test test
 	$( "#appl_d" ).datepicker({
 		dateFormat: "yymmdd",
         showOn: "both",
