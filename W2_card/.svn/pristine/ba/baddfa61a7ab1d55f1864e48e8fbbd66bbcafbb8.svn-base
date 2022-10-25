@@ -1,0 +1,16 @@
+package com.sunrise.card.service;
+
+import java.util.List;
+
+import com.sunrise.card.vo.BillVo;
+import com.sunrise.card.vo.CardVo;
+import com.sunrise.card.vo.CustVo;
+import com.sunrise.card.vo.RcvapplVo;
+
+public interface CardService {
+	List<CardVo> cardList();
+	int deal(RcvapplVo rcvapplVo);
+	int card (CardVo cardVo);
+	int cust (CustVo custVo);
+	int bill (BillVo billVo);
+}

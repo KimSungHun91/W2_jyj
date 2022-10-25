@@ -1,0 +1,10 @@
+package com.sunrise.card.service;
+
+import java.util.List;
+
+import com.sunrise.card.vo.CardVO;
+
+public interface CardService {
+	List<CardVO> cardList();
+	
+}

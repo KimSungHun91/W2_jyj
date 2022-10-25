@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Card">
+
+	<select id="cardList" resultType="com.sunrise.card.vo.RcvapplVo">
+		select * from RCVAPPL
+	</select>
+<!-- 	<select id="cardList" resultType="com.sunrise.card.vo.CustVO">
+		select * from CUST
+	</select>
+	<select id="cardList" resultType="com.sunrise.card.vo.CardVO">
+		select * from CRD
+	</select>
+	<select id="cardList" resultType="com.sunrise.card.vo.BillVO">
+		select * from BILL
+	</select> -->
+	
+	<insert id = "insertCard" parameterType="com.sunrise.card.vo.RcvapplVo">
+	insert into RCVAPPL (
+		APPL_CLAS
+	   ,BRD
+	   ,HG_NM
+	   ,ENG_NM
+	   ,RCV_SEQ_NO
+	   ,STL_DD
+	   ,STL_MTD
+	   ,BNK_CD
+	   ,STL_ACT
+	   ,STMT_SND_MTD
+	   ,EMAIL_ADR
+	   ,HDP_NO
+	   ,SCRT_NO
+	   ,IMPSB_CLAS
+	   ,SSN
+	   ,RCV_D
+	 )
+	values(
+	#{APPL_CLAS} , #{BRD} ,#{HG_NM} , #{ENG_NM}, LPAD(RCV_ID_SEQ.NEXTVAL,7,0),#{STL_DD},#{STL_MTD},
+	#{BNK_CD},#{STL_ACT}, #{STMT_SND_MTD},#{EMAIL_ADR},#{HDP_NO},#{SCRT_NO},#{IMPSB_CLAS},#{SSN},#{RCV_D}
+	)
+	</insert>
+	<insert id = "customer">
+	INSERT INTO CUST (
+CUST_NO
+,SSN
+,HG_NM
+,BIRTH_D
+,HDP_NO	)
+	values(LPAD(CUST_ID_SEQ.NEXTVAL,9,0), #{SSN},  #{HG_NM}, #{BIRTH_D}, #{HDP_NO},
+
+	</insert>
+	<insert id = "bill">
+	INSERT INTO BILL (
+CUST_NO
+,STL_ACT
+,BNK_CD
+,STL_MTD
+,STL_DD
+,PRCS_CLAS
+,STMT_SND_MTD
+,EMAIL_ADR
+)
+	values(#{CUST_NO}, #{STL_ACT}, #{BNK_CD},  #{STL_MTD}, #{STL_DD}, #{PRCS_CLAS}, #{STMT_SND_MTD},
+	#{EMAIL_ADR}
+</insert>
+	<insert id = "card">
+	INSERT INTO CRD (CRD_NO
+,CUST_NO
+,MGT_BBRN
+,REG_D
+,SSN
+,VLD_DUR
+,BRD
+,SCRT_NO
+,ENG_NM
+,BF_CRD_NO
+,LST_CRD_F
+,FST_REG_D
+,CRD_GRD
+,LST_OPR_TM
+,LST_OPR_D
+,LST_OPRT_EMPNO)
+	values(LPAD(CARD_ID_SEQ.NEXTVAL,16,0) , #{CUST_NO} ,#{MGT_BBRN} #{REG_D} ,
+	 #{SSN} ,#{VLD_DUR}, #{BRD} , #{SCRT_NO} ,#{ENG_NM},
+	 #{BF_CRD_NO} , #{LST_CRD_F} ,#{FST_REG_D} 
+	 #{CRD_GRD} , #{LST_OPR_TM} ,#{LST_OPR_D}, #{LST_OPRT_EMPNO}
+
+	</insert>
+</mapper>

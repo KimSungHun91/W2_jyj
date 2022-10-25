@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).click(function(){
+	$("#submit_function").click(function(){
+		var f_SSN = $("#SSN_function").val();
+		var f_RCV_D= $("#RCV_D_function").val();
+		var f_RCV_ID_SEQ= $("#RCV_ID_SEQ_function").val();
+		
+		if(f_SSN== ""){
+			alert("주민 번호가 입력되지 않았습니다.");
+			$("#f_SSN_function").focus();
+			return false;
+		}else if(f_RCV_D == ""){
+			alert("접수 일자가 입력되지 않았습니다.")
+			$("#f_RCV_D_function").focus();
+			return false ;
+		}else if(f_RCV_ID_SEQ == ""){
+			alert("접수 일련 번호가 입력되지 않았습니다.")
+			$("#f_RCV_SEQ_NO_function").focus();
+			return false;
+		}
+		document.form1.action="inquire";
+		document.form1.submit();
+	});
+	let message = "${msg}";
+	if(message != ""){
+		alert(message);
+	}else{}
+});
+		
+</script>	
+<meta charset="UTF-8">
+<title>회원 입회 신청</title>
+</head>
+<body>
+<!-- <!-- <form name="form1" method="get">
+	주민 번호 : <input type="text" id="SSN_function"/> 
+	
+	접수 일자 : <input type="text"  id="f_RCV_D_function"/>
+	
+	접수 일련 번호 : <input type="text" id="f_RCV_ID_SEQ_function"/>
+
+	<input type="button" value="조회" id="inquire"/>
+	<br> -->
+	<form action="send" id="form1" method="post">
+		주민 번호 : <input type="text" id="SSN" name="SSN"/> 
+			접수 일자 : <input type="text" id="RCV_D " name="RCV_D "/> 
+				접수 일련 번호 : <input type="text" id="RCV_SEQ_NO" name="RCV_SEQ_NO"/> 
+	<br>
+	<label for="start">신청 일자:</label>
+<input type="date" id="start" name="APPL_D"
+       value="20200722"
+       min="2020-01-01" max="2020-12-31">
+	
+
+	
+		<label for="APPL_CLAS">신청 구분</label> 
+		<select name="APPL_CLAS" size="1">
+			<option value="11">최초 신규</option>
+			<option value="12">추가 신규</option>
+			<option value="21">재발급</option>
+				</select>
+	
+		<label for="brand">브랜드</label> 
+		<select name="BRD" size="1">
+			<option value="1">visa</option>
+			<option value="2">master</option>
+			<option value="3">jcb</option>
+			</select>
+			<br>	
+		성명(한글) : <input type="text" id="HG_NM" name="HG_NM"/> 
+	성명(영문) : <input type="text"  id="ENG_NM"  name="ENG_NM"/>
+생년 월일 : <input type="text" id="RCV_ID_SEQ" name="RCV_ID_SEQ"/>
+	<br>
+
+		<label for="STL_DD">결제 일자</label> 
+		<select name="STL_DD" size="1">
+			<option value="05">05일</option>
+			<option value="10">10일</option>
+			<option value="15">15일</option>
+			<option value="20">20일</option>
+			<option value="25"> 25일 </option>
+			<option value="99"> 말일 </option>
+			</select>
+			<br>
+		
+		<label for="STL_MTD">결제 방법</label> 
+		<select name="STL_MTD" size="1">
+	<option value="1">지로</option>
+	<option value="2">자동이체</option>
+<option value="3">CMS</option>
+</select>
+	<br>
+	
+			<label for="BNK_CD">결제 은행</label> 
+			<select name="BNK_CD" size="1">
+			<option value="002">산업은행</option>
+			<option value="003">기업은행</option>
+			<option value="004">국민은행</option>
+			<option value="005">외환은행</option>
+			<option value="007">수협</option>
+			<option value="011">농협</option>
+			<option value="012">지역농협</option>
+			<option value="020">우리은행</option>
+			<option value="023">cs제일</option>
+			<option value="027">시티은행</option>
+			<option value="031">대구은행</option>
+			<option value="032">부산은행</option>
+			<option value="034">광주은행</option>
+			<option value="035">제주은행</option>
+			<option value="037">전북은행</option>
+			<option value="039">경남은행</option>
+			<option value="045">새마을</option>
+			<option value="048">신용협동</option>
+			<option value="055">상호저축</option>
+			<option value="054">HSBC</option>
+			<option value="055">도이치</option>
+			<option value="071">우체국</option>
+			<option value="081">하나은행</option>
+			<option value="088">신한은행</option>
+		</select>
+		<!-- 결제 계좌-->
+										<label for="start">결제 계좌</label>
+							<input type="STL_ACT" id="account"  name="STL_ACT" />
+   			
+     			  
+		결제 계좌 획인 유무 : <input type="text" id="PRCS_CLAS" readonly/> 
+			<label for="STMT_SND_MTD">청구서 발송 방법</label> 
+			<select name="STMT_SND_MTD" size="1">
+				<option value="1">우편</option>
+					<option value="e-mail">E-MAIL</option>
+						<option value="deny">청구서 사절</option>
+							</select>
+					<br>	
+				이메일 : <input type="text" id="EMAIL_ADR" name="EMAIL_ADR"/> 
+			핸드폰 번호: <input type="text"  id="HDP_NO" name="HDP_NO"/>
+		비밀 번호: <input type="text" id="SCRT_NO" name="SCRT_NO"/>
+			<br>
+	불능 구분: <input type="text" id="IMPSB_CLAS" readonly="true" name="IMPSB_CLAS" /> 
+불능 코드: <input type="text" id="IMPSB_CD" readonly="true" name="IMPSB_CD"/> 
+<br>
+
+<input type="submit" value="등록" id="submit"/>
+
+<a href="inquire">기간별 입회신청 내역조회 </a>									
+</form>
+</body>
+</html> 

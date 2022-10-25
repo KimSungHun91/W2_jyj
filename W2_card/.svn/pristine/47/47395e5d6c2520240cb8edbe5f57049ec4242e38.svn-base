@@ -1,0 +1,137 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).click(function(){
+	$("#submit_function").click(function(){
+		var f_SSN = $("#SSN_function").val();
+		var f_RCV_D= $("#RCV_D_function").val();
+		var f_RCV_ID_SEQ= $("#RCV_ID_SEQ_function").val();
+		
+		if(f_SSN== ""){
+			alert("주민 번호가 입력되지 않았습니다.");
+			$("#f_SSN_function").focus();
+			return false;
+		}else if(f_RCV_D == ""){
+			alert("접수 일자가 입력되지 않았습니다.")
+			$("#f_RCV_D_function").focus();
+			return false ;
+		}else if(f_RCV_ID_SEQ == ""){
+			alert("접수 일련 번호가 입력되지 않았습니다.")
+			$("#f_RCV_ID_SEQ_function").focus();
+			return false;
+		}
+		document.form1.action="inquire";
+		document.form1.submit();
+	});
+	let message = "${msg}";
+	if(message != ""){
+		alert(message);
+	}else{}
+});
+		
+</script>	
+<meta charset="UTF-8">
+<title>회원 입회 신청</title>
+</head>
+<body>
+<!-- <!-- <form name="form1" method="get">
+	주민 번호 : <input type="text" id="SSN_function"/> 
+	
+	접수 일자 : <input type="text"  id="f_RCV_D_function"/>
+	
+	접수 일련 번호 : <input type="text" id="f_RCV_ID_SEQ_function"/>
+
+	<input type="button" value="조회" id="inquire"/>
+	<br> -->
+	<label for="start">신청 일자:</label>
+<input type="date" id="start" name="trip-start"
+       value="2020-07-22"
+       min="2020-01-01" max="2020-12-31">
+	
+	<form name="form1" method="post">
+
+		<label for="divide">신청 구분</label> 
+		<select name="divide" size="1">
+			<option value="new">최초 신규</option>
+			<option value="plus">추가 신규</option>
+			<option value="renew">재발급</option>
+				</select>
+	
+		<label for="brand">브랜드</label> 
+		<select name="brand" size="1">
+			<option value="visa">visa</option>
+			<option value="master">master</option>
+			<option value="jcb">jcb</option>
+			</select>
+			<br>	
+		성명(한글) : <input type="text" id="HG_NM"/> 
+	성명(영문) : <input type="text"  id="ENG_NM"/>
+생년 월일 : <input type="text" id="f_RCV_ID_SEQ_"/>
+	<br>
+
+		<label for="STL_DD">결제 일자</label> 
+		<select name="STL_DD" size="1">
+			<option value="">05일</option>
+			<option value="">10일</option>
+			<option value="">15일</option>
+			<option value="">20일</option>
+			<option value=""> 25일 </option>
+			<option value=""> 말일 </option>
+			</select>
+			<br>
+		
+		<label for="STL_MTD">결제 방법</label> 
+		<select name="STL_MTD" size="1">
+	<option value="">지로</option>
+	<option value="">자동이체</option>
+<option value="">CMS</option>
+</select>
+	<br>
+	
+			<label for="BNK_CD">결제 은행</label> 
+			<select name="BNK_CD" size="1">
+				<option value="">산업은행</option>
+					<option value="">기업은행</option>
+						<option value="">국민은행</option>
+							<option value="">외환은행</option>
+								<option value="">수협중앙회</option>
+									<option value="">농협중앙회</option>
+										<option value="">농협단위조합</option>
+											<option value="">농협중앙회</option>
+												<option value="">축협중앙회</option>
+													<option value="">축협단위조합</option>
+														<option value="">우리은행 </option>
+															<option value="">제일은행  </option>
+																<option value="">신한은행</option>
+																	<option value="">시티은행</option>
+																			</select>
+						<!-- 결제 계좌-->
+										<label for="start">결제 계좌</label>
+							<input type="STL_ACT" id="account" />
+   			
+     			  
+		결제 계좌 획인 여부 : <input type="text" id="" readonly/> 
+			<label for="STMT_SND_MTD">청구서 발송 방법</label> 
+			<select name="STMT_SND_MTD" size="1">
+				<option value="mail">우편</option>
+					<option value="e-mail">E-MAIL</option>
+						<option value="deny">청구서 사절</option>
+							</select>
+					<br>	
+				이메일 : <input type="text" id="EMAIL_ADR"/> 
+			핸드폰 번호: <input type="text"  id="HDP_NO"/>
+		비밀 번호: <input type="text" id="SCRT_NO"/>
+			<br>
+	불능 구분: <input type="text" id="IMPSB_CLAS" readonly="true" /> 
+불능 사유명: <input type="text" id="SSN_function" readonly="true"/> 
+<br>
+
+<input type="button" value="등록" id="submit"/>
+<a href="inquire">기간별 입회신청 내역조회 </a>									
+</form>
+</body>
+</html> 

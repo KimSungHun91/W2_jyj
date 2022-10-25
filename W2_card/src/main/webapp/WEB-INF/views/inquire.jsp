@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>기간별 입회신청 내역조회 </title>
+</head>
+<body>
+	
+<form action="" method="get">
+<label for="start">기간</label>
+<input type="date" id="start" name="start"
+       value=""
+       >
+       
+							<label for="finish">~</label>
+					<input type="date" id="finish" name="finish"
+      			 value="2020-07-22"
+     		  min="2020-01-01" max="2020-12-31">
+     		  
+	<label for="divide">신청 구분</label> 
+		<select name="divide" size="1">
+			<option value="new">최초 신규</option>
+				<option value="plus">추가 신규</option>
+					<option value="renew">재발급</option>
+				</select>
+				주민 번호 : <input type="text" id="SSN_function"/> 
+					<input type="button" value="조회" id="inquire"/>
+</body>
+</html>
